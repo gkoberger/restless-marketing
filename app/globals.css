@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background: #fafafa;
+  color: #111;
+  overflow: hidden;
+}
+
+.grid-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  display: block;
+  pointer-events: none;
+}
+
+.coming-soon {
+  position: fixed;
+  transform: translateY(-100%);
+  font-size: 0.95rem;
+  color: #666;
+  letter-spacing: 0;
+  white-space: nowrap;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.test-main {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 100dvh;
+  padding-bottom: 6vh;
+}
+
+.test-line {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.1em;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  color: #111;
+}
+
+.test-dots {
+  display: inline-flex;
+  gap: 0.18em;
+  margin-left: 0.08em;
+  align-items: baseline;
+}
+
+.test-dot {
+  width: 0.28em;
+  height: 0.28em;
+  border-radius: 50%;
+  display: inline-block;
+  animation: test-wave 1.4s ease-in-out infinite;
+  transform: translateY(0);
+}
+
+.test-dot.red {
+  background: #e74c3c;
+  animation-delay: 0s;
+}
+.test-dot.yellow {
+  background: #f1c40f;
+  animation-delay: 0.15s;
+}
+.test-dot.green {
+  background: #2ecc71;
+  animation-delay: 0.3s;
+}
+
+@keyframes test-wave {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-0.55em);
+  }
+}
+
