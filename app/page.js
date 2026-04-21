@@ -165,7 +165,9 @@ export default function Home() {
           PULSE_COLORS[Math.floor(Math.random() * PULSE_COLORS.length)];
         const codes = CODES_BY_COLOR[color];
         const code = codes[Math.floor(Math.random() * codes.length)];
-        m = { color, code };
+        const v = 249 + Math.floor(Math.random() * 4);
+        const shade = `rgb(${v},${v},${v})`;
+        m = { color, code, shade };
         cellMeta.set(key, m);
       }
       return m;
@@ -290,10 +292,10 @@ export default function Home() {
           const bl = r < rows - 1 && c > 0 ? radius : 0;
           ctxBg.beginPath();
           ctxBg.roundRect(x, y, CELL, CELL, [tl, tr, br, bl]);
-          if (hoverCell && hoverCell.col === c && hoverCell.row === r) {
-            ctxBg.fillStyle = "#ffffff";
-            ctxBg.fill();
-          }
+          const isHover =
+            hoverCell && hoverCell.col === c && hoverCell.row === r;
+          ctxBg.fillStyle = isHover ? "#ffffff" : getCellMeta(c, r).shade;
+          ctxBg.fill();
           ctxBg.stroke();
         }
       }
