@@ -21,15 +21,73 @@ body {
   pointer-events: none;
 }
 
-.coming-soon {
+.info-card {
   position: fixed;
-  transform: translateY(-100%);
-  font-size: 0.95rem;
-  color: #666;
-  letter-spacing: 0;
-  white-space: nowrap;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 0 0 0.5px #e5e5e5;
+  gap: 10px;
+  padding: 0 12px;
+}
+
+.info-cmd {
+  font-family:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 15px;
   line-height: 1;
-  pointer-events: none;
+  color: #111;
+  letter-spacing: 0;
+}
+
+.info-cmd-prompt {
+  color: #bbb;
+  margin-right: 0.4em;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.info-cmd-text {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.info-copy {
+  border: 0;
+  background: transparent;
+  color: #aaa;
+  cursor: pointer;
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition:
+    color 120ms ease,
+    background-color 120ms ease;
+}
+
+.info-copy:hover {
+  color: #333;
+  background: #f2f2f2;
+}
+
+.info-copy:active {
+  background: #e8e8e8;
+}
+
+.info-copy.info-copy-done,
+.info-copy.info-copy-done:hover {
+  color: #22c55e;
+  background: transparent;
 }
 
 .test-main {
