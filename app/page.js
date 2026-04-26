@@ -98,7 +98,7 @@ function randomColor() {
   return PULSE_COLORS[Math.floor(Math.random() * PULSE_COLORS.length)];
 }
 
-const CMD_TEXT = "npx api setup";
+const CMD_TEXT = "npx api-beta setup";
 
 const COPY_GREEN = "#22C55E";
 const COPY_STAGGER_MS = 55;
@@ -567,7 +567,10 @@ export default function Home() {
           <span className="info-cmd-prompt" aria-hidden="true">
             $
           </span>
-          <span className="info-cmd-text">{CMD_TEXT}</span>
+          <span className="info-cmd-text">
+            npx api<span className="info-cmd-beta" aria-hidden="true">-beta</span>{" "}
+            setup
+          </span>
         </div>
         <button
           type="button"
