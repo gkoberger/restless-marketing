@@ -244,16 +244,29 @@ export default function Home() {
       cardBounds.row2 = cardBounds.row1 + cr;
 
       cardEdges.clear();
-      for (let c = cardBounds.col1; c < cardBounds.col2; c++) {
-        for (let r = cardBounds.row1; r <= cardBounds.row2; r++) {
-          cardEdges.add(edgeKey(c, r, c + 1, r));
+      const blockBox = (col1, row1, col2, row2) => {
+        for (let c = col1; c < col2; c++) {
+          for (let r = row1; r <= row2; r++) {
+            cardEdges.add(edgeKey(c, r, c + 1, r));
+          }
         }
-      }
-      for (let c = cardBounds.col1; c <= cardBounds.col2; c++) {
-        for (let r = cardBounds.row1; r < cardBounds.row2; r++) {
-          cardEdges.add(edgeKey(c, r, c, r + 1));
+        for (let c = col1; c <= col2; c++) {
+          for (let r = row1; r < row2; r++) {
+            cardEdges.add(edgeKey(c, r, c, r + 1));
+          }
         }
-      }
+      };
+      blockBox(
+        cardBounds.col1,
+        cardBounds.row1,
+        cardBounds.col2,
+        cardBounds.row2,
+      );
+      const logoCol1 = Math.max(0, cardBounds.col1 - 1);
+      const logoRow1 = Math.max(0, cardBounds.row1 - 1);
+      const logoCol2 = Math.min(cols, logoCol1 + cc);
+      const logoRow2 = cardBounds.row1;
+      blockBox(logoCol1, logoRow1, logoCol2, logoRow2);
 
       const card = cardRef.current;
       if (card) {
@@ -266,10 +279,10 @@ export default function Home() {
 
       const logo = logoRef.current;
       if (logo) {
-        logo.style.left = `${offsetX + (cardBounds.col1 - 1) * CELL}px`;
-        logo.style.top = `${offsetY + (cardBounds.row1 - 1) * CELL}px`;
-        logo.style.width = `${cc * CELL}px`;
-        logo.style.height = `${CELL}px`;
+        logo.style.left = `${offsetX + logoCol1 * CELL}px`;
+        logo.style.top = `${offsetY + logoRow1 * CELL}px`;
+        logo.style.width = `${(logoCol2 - logoCol1) * CELL}px`;
+        logo.style.height = `${(logoRow2 - logoRow1) * CELL}px`;
         logo.style.visibility = "visible";
       }
     };
@@ -574,12 +587,9 @@ export default function Home() {
   return (
     <>
       <canvas ref={canvasBgRef} className="grid-canvas" />
-      <img
-        ref={logoRef}
-        src="/restless.svg"
-        alt="Restless"
-        className="site-logo"
-      />
+      <div ref={logoRef} className="site-logo">
+        <img src="/restless.svg" alt="Restless" />
+      </div>
       <div
         ref={cardRef}
         className={"info-card" + (everCopied ? " info-card-pinned" : "")}
