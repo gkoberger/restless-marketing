@@ -34,7 +34,7 @@ body {
   background: #ffffff;
   border-radius: 6px;
   box-shadow: 0 0 0 0.5px #e5e5e5;
-  padding: 16px 28px;
+  padding: 12px 28px 20px;
   pointer-events: none;
   user-select: none;
   -webkit-user-select: none;
