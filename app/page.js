@@ -107,6 +107,7 @@ export default function Home() {
   const canvasBgRef = useRef(null);
   const canvasFgRef = useRef(null);
   const cardRef = useRef(null);
+  const logoRef = useRef(null);
   const pulsesRef = useRef([]);
   const copiedAtRef = useRef(null);
   const [copied, setCopied] = useState(false);
@@ -261,6 +262,15 @@ export default function Home() {
         card.style.width = `${cc * CELL}px`;
         card.style.height = `${cr * CELL}px`;
         card.style.visibility = "visible";
+      }
+
+      const logo = logoRef.current;
+      if (logo) {
+        logo.style.left = `${offsetX + (cardBounds.col1 - 1) * CELL}px`;
+        logo.style.top = `${offsetY + (cardBounds.row1 - 1) * CELL}px`;
+        logo.style.width = `${cc * CELL}px`;
+        logo.style.height = `${CELL}px`;
+        logo.style.visibility = "visible";
       }
     };
 
@@ -564,6 +574,12 @@ export default function Home() {
   return (
     <>
       <canvas ref={canvasBgRef} className="grid-canvas" />
+      <img
+        ref={logoRef}
+        src="/restless.svg"
+        alt="Restless"
+        className="site-logo"
+      />
       <div
         ref={cardRef}
         className={"info-card" + (everCopied ? " info-card-pinned" : "")}

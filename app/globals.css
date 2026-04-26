@@ -21,6 +21,20 @@ body {
   pointer-events: none;
 }
 
+.site-logo {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  object-fit: contain;
+  object-position: left center;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 .info-card {
   position: fixed;
   left: 0;
