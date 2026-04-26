@@ -8,6 +8,7 @@ const PAD_SIDES = 80;
 const PAD_BOTTOM = 80;
 const CARD_COLS = 5;
 const CARD_ROWS = 1;
+const LOGO_COLS = 4;
 const FADE_LEN = 60;
 const GRID_TRANSPARENT = "rgba(229, 229, 229, 0)";
 const GRID_COLOR = "#E5E5E5";
@@ -262,9 +263,10 @@ export default function Home() {
         cardBounds.col2,
         cardBounds.row2,
       );
+      const lc = Math.min(LOGO_COLS, cols);
       const logoCol1 = Math.max(0, cardBounds.col1 - 1);
       const logoRow1 = Math.max(0, cardBounds.row1 - 1);
-      const logoCol2 = Math.min(cols, logoCol1 + cc);
+      const logoCol2 = Math.min(cols, logoCol1 + lc);
       const logoRow2 = cardBounds.row1;
       blockBox(logoCol1, logoRow1, logoCol2, logoRow2);
 
