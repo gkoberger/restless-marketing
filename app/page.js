@@ -266,8 +266,8 @@ export default function Home() {
       const lc = Math.min(LOGO_COLS, cols);
       const logoCol1 = Math.max(0, cardBounds.col1 - 1);
       const logoCol2 = Math.min(cols, logoCol1 + lc);
-      const logoRow1 = Math.max(0, cardBounds.row1 - 1);
-      const logoRow2 = cardBounds.row1;
+      const logoRow1 = Math.max(0, cardBounds.row1 - 2);
+      const logoRow2 = logoRow1 + 1;
       blockBox(logoCol1, logoRow1, logoCol2, logoRow2);
 
       const card = cardRef.current;
