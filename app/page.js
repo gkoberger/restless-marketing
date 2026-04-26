@@ -110,11 +110,13 @@ export default function Home() {
   const pulsesRef = useRef([]);
   const copiedAtRef = useRef(null);
   const [copied, setCopied] = useState(false);
+  const [everCopied, setEverCopied] = useState(false);
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(CMD_TEXT);
       setCopied(true);
+      setEverCopied(true);
       setTimeout(() => setCopied(false), 1500);
       const now = performance.now();
       copiedAtRef.current = now;
@@ -562,7 +564,10 @@ export default function Home() {
   return (
     <>
       <canvas ref={canvasBgRef} className="grid-canvas" />
-      <div ref={cardRef} className="info-card">
+      <div
+        ref={cardRef}
+        className={"info-card" + (everCopied ? " info-card-pinned" : "")}
+      >
         <div className="info-cmd">
           <span className="info-cmd-prompt" aria-hidden="true">
             $

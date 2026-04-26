@@ -73,7 +73,8 @@ body {
     opacity 200ms ease;
 }
 
-.info-card:hover .info-cmd-beta {
+.info-card:hover .info-cmd-beta,
+.info-card-pinned .info-cmd-beta {
   max-width: 5em;
   opacity: 1;
 }
