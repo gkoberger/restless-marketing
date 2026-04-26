@@ -265,10 +265,10 @@ export default function Home() {
       );
       const lc = Math.min(LOGO_COLS, cols);
       const logoCol1 = Math.max(0, cardBounds.col1 - 1);
-      const logoRow1 = Math.max(0, cardBounds.row1 - 2);
       const logoCol2 = Math.min(cols, logoCol1 + lc);
-      const logoRow2 = logoRow1 + 1;
-      blockBox(logoCol1, logoRow1, logoCol2, logoRow2);
+      const logoBlockRow1 = Math.max(0, cardBounds.row1 - 2);
+      const logoBlockRow2 = cardBounds.row1;
+      blockBox(logoCol1, logoBlockRow1, logoCol2, logoBlockRow2);
 
       const card = cardRef.current;
       if (card) {
@@ -282,9 +282,9 @@ export default function Home() {
       const logo = logoRef.current;
       if (logo) {
         logo.style.left = `${offsetX + logoCol1 * CELL}px`;
-        logo.style.top = `${offsetY + logoRow1 * CELL}px`;
+        logo.style.top = `${offsetY + (cardBounds.row1 - 1.5) * CELL}px`;
         logo.style.width = `${(logoCol2 - logoCol1) * CELL}px`;
-        logo.style.height = `${(logoRow2 - logoRow1) * CELL}px`;
+        logo.style.height = `${CELL}px`;
         logo.style.visibility = "visible";
       }
     };
