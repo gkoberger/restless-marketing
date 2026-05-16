@@ -1,7 +1,10 @@
 .cli-page {
   position: fixed;
   inset: 0;
-  background: #fafafa;
+  background-color: #fafafa;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56'><path d='M0 0 L56 0' stroke='%23d4d4d4' stroke-width='1' stroke-dasharray='1 4' stroke-linecap='round'/><path d='M0 0 L0 56' stroke='%23d4d4d4' stroke-width='1' stroke-dasharray='1 4' stroke-linecap='round'/></svg>");
+  background-size: 56px 56px;
+  background-position: 50% 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
